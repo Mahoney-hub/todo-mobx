@@ -1,10 +1,13 @@
 import React from 'react';
+import {Heading} from './components/Heading';
+import {Todo} from './components/Todo';
 
 const App = () => {
     return (
-        <div>
-          
-        </div>
+        <>
+            <Heading/>
+            <Todo/>
+        </>
     );
 };
 
