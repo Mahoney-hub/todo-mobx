@@ -1,18 +1,22 @@
 import React from 'react';
 import {Button, ButtonGroup} from '@mui/material';
-import {FilterValue} from './Todo';
+import styled from 'styled-components';
+import mobx from '../store/todo';
 
-type TodoFilterType = {
-    setFilter: (value: FilterValue) => void
-}
-
-export const TodoFilter = ({setFilter}:TodoFilterType) => {
+export const TodoFilter = () => {
     return (
         <ButtonGroup variant={'contained'} fullWidth>
-            <Button onClick={()=>setFilter('ALL')}>ALL</Button>
-            <Button onClick={()=>setFilter('ACTIVE')}>ACTIVE</Button>
-            <Button onClick={()=>setFilter('COMPLETED')}>COMPLETED</Button>
+            <ButtonStyled onClick={()=>mobx.changeFilter('ALL')}>ALL</ButtonStyled>
+            <ButtonStyled onClick={()=>mobx.changeFilter('ACTIVE')}>ACTIVE</ButtonStyled>
+            <ButtonStyled onClick={()=>mobx.changeFilter('COMPLETED')}>COMPLETED</ButtonStyled>
         </ButtonGroup>
     );
 };
+
+const ButtonStyled = styled(Button)`
+&& {
+  font-family: cursive;
+  font-weight: 400;
+}
+`
 

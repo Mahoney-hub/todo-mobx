@@ -5,6 +5,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import IconButton from '@mui/material/IconButton';
 import {TextField} from '@mui/material';
 import {useState} from 'react';
+import mobx from '../store/todo';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -19,15 +20,15 @@ const style = {
 };
 
 type BasicModalType = {
-    changeTaskTitle: (newTitle: string) => void
+    id: string
 }
 
-export const BasicModal = ({changeTaskTitle}: BasicModalType) => {
+export const BasicModal = ({id}: BasicModalType) => {
     const [title, setTitle] = useState('')
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
-        changeTaskTitle(title)
+        mobx.changeTaskTitle(id, title)
         setOpen(false);
     }
 

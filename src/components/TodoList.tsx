@@ -4,20 +4,12 @@ import {TodosType} from './Todo';
 
 type TodoListType = {
     todos: TodosType[]
-    deleteTask: (id:string) => void
-    changeTaskCompleted: (id: string) => void
-    changeTaskTitle: (id: string, newTitle: string) => void
 }
 
-export const TodoList = ({todos, deleteTask, changeTaskCompleted, changeTaskTitle}: TodoListType) => {
+export const TodoList = ({todos}: TodoListType) => {
     return (
         <ul className={'list'}>
-            {todos.map(todo => <TodoItem key={todo.id}
-                                         {...todo}
-                                         deleteTask={deleteTask}
-                                         changeTaskCompleted={changeTaskCompleted}
-                                         changeTaskTitle={changeTaskTitle}
-            />)}
+            {todos.map(todo => <TodoItem key={todo.id} {...todo} />)}
         </ul>
     );
 };
